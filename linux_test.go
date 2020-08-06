@@ -102,7 +102,7 @@ func TestCompressMaintainMode(t *testing.T) {
 		Filename:         filename,
 		MaxBackups:       1,
 		MaxSize:          100, // megabytes
-		notifyCompressed: make(chan bool),
+		notifyCompressed: make(chan struct{}),
 	}
 	defer l.Close()
 	b := []byte("boo!")
@@ -151,7 +151,7 @@ func TestCompressMaintainOwner(t *testing.T) {
 		Filename:         filename,
 		MaxBackups:       1,
 		MaxSize:          100, // megabytes
-		notifyCompressed: make(chan bool),
+		notifyCompressed: make(chan struct{}),
 	}
 	defer l.Close()
 	b := []byte("boo!")
