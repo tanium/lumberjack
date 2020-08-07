@@ -111,7 +111,9 @@ type Logger struct {
 	file *os.File
 	mu   sync.Mutex
 
-	millCh         chan struct{}
+	// millCh is signalled to tell mill to compress/remove old log files.
+	millCh chan struct{}
+	// millShutdownCh is signalled when mill has shutdown completely.
 	millShutdownCh chan struct{}
 
 	// notifyRemoved is signalled when one or more files are removed. Used only for testing.
