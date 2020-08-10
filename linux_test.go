@@ -1,4 +1,4 @@
-// +build linux
+// +build linux darwin
 
 package lumberjack
 
@@ -181,14 +181,14 @@ type fakeFile struct {
 
 type fakeFS struct {
 	files map[string]fakeFile
-	mu sync.Mutex
+	mu    sync.Mutex
 }
 
 func newFakeFS() *fakeFS {
 	return &fakeFS{files: make(map[string]fakeFile)}
 }
 
-func (fs *fakeFS) fileOwners(name string) int, int {
+func (fs *fakeFS) fileOwners(name string) (int, int) {
 	fs.mu.Lock()
 	defer fs.mu.Unlock()
 	result := fs.files[name]

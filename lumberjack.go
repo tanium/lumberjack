@@ -238,7 +238,7 @@ func (l *Logger) openNew() error {
 			return fmt.Errorf("can't rename log file: %s", err)
 		}
 
-		// this is a no-op anywhere but linux
+		// this is a no-op anywhere but linux or darwin
 		if err := chown(name, info); err != nil {
 			return err
 		}
